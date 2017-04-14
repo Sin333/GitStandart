@@ -1,0 +1,104 @@
+﻿<Window x:Class="GitHub.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GitHub"
+        mc:Ignorable="d"
+        Title="GitStandart" Width="800" Height="500" MaxWidth="900" MaxHeight="500" MinWidth="900" MinHeight="500" >
+
+    <Grid x:Name="Grid_main_window">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="75*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <!--Left side-->
+
+        <Border x:Name="Background_left_side" Background="#FFB8B8B8" Grid.Column="0" Grid.RowSpan="3"/>
+
+        <!--List you repository-->
+        <StackPanel Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="20" Foreground="Black" FontWeight="ExtraLight" Text="Your repository"/>
+            <Polyline HorizontalAlignment="Center" Stroke="Black" StrokeThickness="1" SnapsToDevicePixels="True" Points="0,5,150,5"/>
+        </StackPanel>
+
+        <!--List repository-->
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+            <ListView Grid.Row="0" Name="listview_repository" SelectionMode="Single" FontWeight="UltraLight" Background="{x:Null}" Foreground="Black" FontSize="18" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}"/>
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Path for folder"  HorizontalAlignment="Center"/>
+                <Grid Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="7*"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="ListBox_all_disk" Grid.Column="0" SelectionChanged="ListBox_all_disk_SelectionChanged"/>
+                    <Button x:Name="button_path_folder" Content="Pull request" Grid.Column="1" Margin="5,0,0,0" Click="button_path_folder_Click"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <!--Button with open repository folder-->
+        <Button Margin="6,6,6,6" x:Name="button_open_directory" Click="button_open_directory_Click" 
+                Content="Open folder" FontSize="20" FontWeight="ExtraLight" Foreground="Black" 
+                Background="{x:Null}" BorderBrush="Black" Grid.Column="0" Grid.Row="2"/>
+
+        <!--Right side-->
+
+        <Border x:Name="Background_right_side" Background="White" Grid.Column="1" Grid.RowSpan="3"/>
+        <!--Top URL for download-->
+        <Grid Grid.Column="1" Grid.Row="0" Name="searchpanel" Margin="10,10,10,10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Foreground="Black" FontSize="16" Text="URL:" FontWeight="ExtraLight" VerticalAlignment="Center"/>
+
+            <!--TextBox for URL-->
+            <TextBox Name="textbox_URL_download" Text="https://github.com/Sin333/SemestrDotNET.git" FontSize="16" FontWeight="Light" BorderBrush="Black" Foreground="Black" Margin="5,0,5,0" Grid.Column="1"/>
+
+            <!--buttons download-->
+            <Button Name="button_url_download" Click="button_url_download_Click" 
+                    Content="Download" Foreground="Black" FontWeight="ExtraLight" FontSize="16" 
+                    Background="{x:Null}" BorderBrush="Black" Grid.Column="2" Margin="5,0"/>
+
+            <Button Name="button_all_download" Click="button_all_download_Click" 
+                    Content="&#xE896;" Foreground="Black" FontWeight="ExtraLight" FontSize="16" FontFamily="Segoe MDL2 Assets" 
+                    Background="{x:Null}" BorderBrush="Black" Grid.Column="3"/>
+        </Grid>
+        <!--Center place for view all files in folder-->
+        <ScrollViewer Grid.Column="1" Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="5,0,0,0">
+            <StackPanel Name="StackPanel_center" Background="{x:Null}">
+                <TextBlock Name="Header_StackPanel_item_folder" Text="GitStandart" FontSize="25" Foreground="Black"/>
+                <Polyline Stroke="Black" HorizontalAlignment="Stretch" StrokeThickness="2" SnapsToDevicePixels="True" Points="0,0,670,0"/>
+                <StackPanel x:Name="StackPanel_all_download_repository"/>
+                <StackPanel x:Name="StackPanel_items_folder"/>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Button_show_more_url_for_repository" Margin="6,6,6,6" Grid.Column="0" Grid.ColumnSpan="2" FontSize="20" FontWeight="ExtraLight" Foreground="Black" 
+                Background="{x:Null}" BorderBrush="Black" Content="More download" Click="Button_more_download_Click"/>
+            <Button x:Name="Button_add_new_url_for_download" Margin="6,6,6,6" Grid.Column="2" FontSize="20" FontWeight="ExtraLight" Foreground="Black" 
+                Background="{x:Null}" BorderBrush="Black" Content="Add new repository" Click="Button_add_new_url_for_download_Click"/>
+        </Grid>
+    </Grid>
+</Window>
